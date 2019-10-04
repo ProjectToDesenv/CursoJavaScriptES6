@@ -1,0 +1,16 @@
+{
+  "name": "CursoJavaScriptES6",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/marcelodork1/CursoJavaScriptES6.git",
+  "author": "Marcelo Matos dos Santos <marcelodork@hotmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@babel/cli": "^7.6.2",
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2"
+  },
+  "scripts": {
+    "dev": "babel ./main.js -o ./bundle.js -w"
+  }
+}
