@@ -120,3 +120,67 @@ console.log(newArr2);
 const test = () => ({nome: 'Marcelo Matos dos Santos', idade: 32, nacionalidade : 'BR'});
 console.log(test());
 
+
+
+
+/* Aula 07/10/2019*/
+const soma = (a = 3, b = 6) => a + b;
+console.log(soma(1));
+console.log(soma());
+
+const usuario ={
+nome:'Marcelo',
+idade: 32,
+endereco:{
+    rua: 'Jandaia do Sul',
+    numero: 263,
+    bairro: 'São Conrado'
+}
+};
+
+/* Desestruturação*/
+
+const {nome,idade}= usuario;
+
+console.log(nome);
+console.log(idade);
+
+/* Rest /Spread */
+
+
+    function soma3(a,b,...params){
+        //return params.reduce((total,next) => total + next);        
+        return params;
+    };
+
+
+
+
+    console.log(soma3(1,3,4,5,6,7));
+
+
+    //SPREAD
+    const arr5 = [1,2,3];
+    const arr6 = [4,5,6];
+
+    const arr7 = [...arr5,arr6];
+    console.log(arr7);
+
+
+    const nome2 = 'Marcelo Matos dos Santos';
+    const idade2 = 32;
+
+    // Template Literals
+    console.log(`Meu Nome é ${nome2} e tenho ${idade2} anos.`)
+
+
+    //Object Short Syntax
+
+    const usuario2 = {
+        nome2,
+        idade2
+    };
+    console.log(usuario2);
+
+    
+
