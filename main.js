@@ -184,3 +184,28 @@ console.log(idade);
 
     
 
+import {soma_WebPack} from './funcoes';
+import { rejects } from 'assert';
+
+console.log(soma_WebPack(1,9));
+
+
+
+
+
+const minhaPromisse = () => new Promise((resolve,reject) => {
+    setTimeout(() => { resolve('OK') }, 2000);
+});
+
+minhaPromisse().then(response => {
+    console.log(response);
+});
+
+
+async function executaPromise(){
+    const response = await minhaPromisse();
+
+    console.log(response);
+}
+
+executaPromise();
