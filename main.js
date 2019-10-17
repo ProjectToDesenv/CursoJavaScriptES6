@@ -80,7 +80,7 @@ MinhaLista.mostraUsuario();*/
 
 /*Aula 04/10/2019*/
 
-const arr = [1,2,3,4,5,8,9,15,11,21]
+/*const arr = [1,2,3,4,5,8,9,15,11,21]
 
 const newArr = arr.map(function(item, index){
 
@@ -124,7 +124,7 @@ console.log(test());
 
 
 /* Aula 07/10/2019*/
-const soma = (a = 3, b = 6) => a + b;
+/*const soma = (a = 3, b = 6) => a + b;
 console.log(soma(1));
 console.log(soma());
 
@@ -140,7 +140,7 @@ endereco:{
 
 /* Desestruturação*/
 
-const {nome,idade}= usuario;
+/*const {nome,idade}= usuario;
 
 console.log(nome);
 console.log(idade);
@@ -148,15 +148,15 @@ console.log(idade);
 /* Rest /Spread */
 
 
-    function soma3(a,b,...params){
+   //function soma3(a,b,...params){
         //return params.reduce((total,next) => total + next);        
-        return params;
-    };
+     //   return params;
+    //};
 
 
 
 
-    console.log(soma3(1,3,4,5,6,7));
+    /*console.log(soma3(1,3,4,5,6,7));
 
 
     //SPREAD
@@ -171,12 +171,12 @@ console.log(idade);
     const idade2 = 32;
 
     // Template Literals
-    console.log(`Meu Nome é ${nome2} e tenho ${idade2} anos.`)
+  //  console.log(`Meu Nome é ${nome2} e tenho ${idade2} anos.`)
 
 
     //Object Short Syntax
 
-    const usuario2 = {
+    /*const usuario2 = {
         nome2,
         idade2
     };
@@ -208,4 +208,87 @@ async function executaPromise(){
     console.log(response);
 }
 
-executaPromise();
+executaPromise();*/
+
+import axios from 'axios';
+
+class Api{
+    static async getUserInfo(username){
+        try{
+            const response = await axios.get(`https://api.github.com/users/${username}`);
+            console.log(response);
+
+        }catch(err){
+            console.warn('Erro na API');
+        }
+       
+    }
+}
+
+Api.getUserInfo('diego3g');
+
+
+class App{
+    constructor(){
+        this.respositories = [];
+        this.formEl = document.getElementById('repo-form');
+        this.listEl = document.getElementById('repo-list');
+        console.log(this.formEl);
+        this.registerHandlers();
+    }
+
+    registerHandlers(){
+    this.formEl.onsubmit = event => this.addRepository(event);
+
+    
+    }
+
+    addRepository(event){
+
+        event.preventDefault();
+
+        this.respositories.push({
+            name: 'Marcelo Matos dos Santos',
+            description :'Tire sua ideia do papel e dê vida a sua startup',
+            avatar_url: 'https://avatars0.githubusercontent.com/u/28929274?v=4',
+            html_url: 'http://github.com/rocketseat/rocketseat.com.br'
+        });
+
+        console.log(this.respositories);
+
+        this.render();
+    }
+
+    render(){       
+        this.listEl.innerHTML = '';
+        this.respositories.forEach(repo => {
+            let imgEl = document.createElement('img');
+            imgEl.setAttribute('src',repo.avatar_url);
+
+            let titleEl = document.createElement('strong');
+            titleEl.appendChild(document.createTextNode(repo.name));
+
+            let descriptionEl = document.createElement('p');
+            descriptionEl.appendChild(document.createTextNode(repo.description));
+
+            let linkEl = document.createElement('a');
+            linkEl.setAttribute('target','_blank');
+            linkEl.appendChild(document.createTextNode('Acessar'));
+
+            let listItemEl = document.createElement('li');
+            listItemEl.appendChild(imgEl);
+            listItemEl.appendChild(titleEl);
+            listItemEl.appendChild(descriptionEl);
+            listItemEl.appendChild(linkEl);   
+            
+            this.listEl.appendChild(listItemEl);
+
+         
+
+        });
+    }
+
+}
+
+new App();
+
